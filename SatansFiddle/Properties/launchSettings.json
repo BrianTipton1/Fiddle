@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "SatansFiddle": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}
