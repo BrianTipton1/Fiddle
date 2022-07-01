@@ -24,6 +24,7 @@ docker compose up -d
 
 #### Errors
 - To future me if errors happen for "no" reason
-  - Check opus/sodium
+  - Check opus/sodium installations
   - Also the hacky way to pipe two commands in music service
+    - Check discord dotnet docs if a better/changed implementation is given with ffmpeg
   - Maybe a 'docker compose up -d --build' with fresh versions of all will fix
