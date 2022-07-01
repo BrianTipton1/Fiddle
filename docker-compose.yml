@@ -2,6 +2,7 @@ version: '3.4'
 
 services:
   satansfiddle:
+    image: ${DOCKER_REGISTRY-}satansfiddle
     build:
       context: .
       dockerfile: SatansFiddle/Dockerfile

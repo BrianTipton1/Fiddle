@@ -22,7 +22,7 @@ namespace SatansFiddle.Services.Message
         public SocketVoiceChannel? GetVoiceChannel(SocketMessage message)
         {
             var guilds = message.Author.MutualGuilds;
-            var guild = guilds.FirstOrDefault();
+            var guild = guilds.FirstOrDefault(guild => guild.TextChannels.Contains(message.Channel));
             foreach (SocketVoiceChannel voicechannel in guild.VoiceChannels)
             {
                 if (voicechannel != null)
@@ -52,6 +52,7 @@ namespace SatansFiddle.Services.Message
                     else
                     {
                         await message.Channel.SendMessageAsync("You need to be in a voice channel to play audio");
+                        return;
                     }
                 }
                 if (message.Content.Contains("stop"))
@@ -65,11 +66,13 @@ namespace SatansFiddle.Services.Message
                     else
                     {
                         await message.Channel.SendMessageAsync("You need to be in a voice channel to stop audio");
+                        return;
                     }
                 }
                 else
                 {
-                    await message.Channel.SendMessageAsync($"Your link below seems to be malformed, please check and try again\n```{message.Content.Remove(0, 1)}```");
+                    await message.Channel.SendMessageAsync($"Your link below seems to be malformed, please check" +
+                        $" and try again\n```{message.Content.Remove(0, 1)}``` If problem persists you might need to check the regex for youtube videos. (See MessageService.cs)");
                 }
             }
         }
